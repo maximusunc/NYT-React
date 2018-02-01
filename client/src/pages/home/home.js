@@ -48,6 +48,7 @@ class Articles extends Component {
     };
 
     render() {
+        console.log('I am rendering')
         return (
             <Container>
                 <SearchForm 
