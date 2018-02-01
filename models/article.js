@@ -6,17 +6,17 @@ const articleSchema = new Schema({
         type: String,
         required: true
     },
-    date: {
-        type: Date,
-        default: Date.now
-    },
     url: {
         type: String,
         unique: true,
-        match: [/^((http[s]?|ftp):\/)?\/?([^:\/\s]+)((\/\w+)*\/)([\w\-\.]+[^#?\s]+)(.*)?(#[\w\-]+)?$/, "The website is bad"]
+        // match: [/^((http[s]?|ftp):\/)?\/?([^:\/\s]+)((\/\w+)*\/)([\w\-\.]+[^#?\s]+)(.*)?(#[\w\-]+)?$/, "The website is bad"]
     },
+    date: {
+        type: Date,
+        default: Date.now
+    }
 });
 
-var Article = mongoose.model("Article", articleSchema);
+const Article = mongoose.model("Article", articleSchema);
 
 module.exports = Article;

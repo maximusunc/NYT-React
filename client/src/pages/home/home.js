@@ -1,11 +1,18 @@
 import React, {Component} from "react";
 import SearchForm from "../../components/searchForm";
-import Search from "../../components/searchArticles";
+import SearchArticles from "../../components/searchArticles";
 import API from "../../utils/API.js";
+import Container from "../../components/container";
+
+const defaultState = {
+    search: "",
+    startDate: "",
+    endDate: ""
+};
 
 class Articles extends Component {
     state = {
-        title: "",
+        search: "",
         startDate: "",
         endDate: "",
         articles: []
@@ -18,36 +25,54 @@ class Articles extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        this.searchArticles({
-            title: this.state.title,
-            startDate: this.state.startDate,
-            endDate: this.state.endDate
-        });
-        this.setState({
-            title: "",
-            startDate: "",
-            endDate: ""
-        });
+        if (this.state.search) {
+            this.searchArticles({
+                search: this.state.search,
+                startDate: this.state.startDate,
+                endDate: this.state.endDate
+            });
+        }
+        this.setState(defaultState);
     };
 
     searchArticles = query => {
         API.getArticles(query)
-            .then(res => this.setState({articles: res.data}))
+            .then(res => this.setState({articles: res.data.response.docs}))
+            .catch(err => console.log(err));
+    };
+
+    saveArticle = (article) => {
+        API.saveArticle(article)
+            .then(res => console.log("Success"))
             .catch(err => console.log(err));
     };
 
     render() {
         return (
-            <div>
+            <Container>
                 <SearchForm 
-                    title={this.state.title} 
+                    search={this.state.search} 
                     startDate={this.state.startDate} 
                     endDate={this.state.endDate} 
                     handleInputChange={this.handleInputChange} 
                     handleFormSubmit={this.handleFormSubmit}
                 />
-                <Search />
-            </div>
+                {this.state.articles.length ? (
+                    this.state.articles.map(article => (
+                        <SearchArticles
+                            key={article._id}
+                            title={article.headline.main}
+                            url={article.web_url}
+                            id={article._id}
+                            onClick={() => this.saveArticle({title: article.headline.main, url: article.web_url})}
+                        />
+                    ))
+                ) : (
+                    <h2>No Articles to display yet</h2>
+                )}
+                
+                
+            </Container>
         );
     };
 };

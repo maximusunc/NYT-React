@@ -8,12 +8,12 @@ const SearchForm = props =>
                 <label htmlFor="title" className="col-sm-2 col-form-label">Topic</label>
                 <div className="col-sm-10">
                 <input
-                    value={props.title}
+                    value={props.search}
                     onChange={props.handleInputChange}
-                    name="title"
+                    name="search"
                     type="text"
                     className="form-control"
-                    id="title"
+                    id="search"
                     placeholder="Topic"
                     />
                 </div>

@@ -1,9 +1,11 @@
 import React from "react";
 import "./searchArticles.css";
+import { Link } from "react-router-dom";
 
-const Search = props => 
-    <div>
-        <h1>Test</h1>
+const SearchArticles = props => 
+    <div className="container">
+        <a href={props.url} id={props.id}>{props.title}</a>
+        <Link to="/saved"><button id={props.id} onClick={props.onClick}>Save</button></Link>
     </div>;
 
-export default Search;
+export default SearchArticles;
