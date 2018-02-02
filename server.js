@@ -18,7 +18,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Add routes, both API and view
-app.use('api',routes);
+app.use(routes);
 
 // Set up promises with mongoose
 mongoose.Promise = global.Promise;
@@ -29,7 +29,7 @@ mongoose.connect(
 
 // Send every request to the React app
 // Define any API routes before this runs
-app.get("/", function(req, res) {
+app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
