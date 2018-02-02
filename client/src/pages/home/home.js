@@ -25,6 +25,15 @@ class Articles extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
+        if (this.state.startDate && this.state.endDate) {
+            const regex = /^(19|20)\d\d(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])$/;
+            const validStart = regex.exec(this.state.startDate);
+            const validEnd = regex.exec(this.state.endDate);
+            if (!validStart || !validEnd) {
+                alert("Please enter dates in the correct format");
+                return;
+            };
+        };
         if (this.state.search) {
             this.searchArticles({
                 search: this.state.search,
@@ -42,8 +51,9 @@ class Articles extends Component {
     };
 
     saveArticle = (article) => {
+        const { history } = this.props;
         API.saveArticle(article)
-            .then(res => console.log("Success"))
+            .then(res => history.push("/saved"))
             .catch(err => console.log(err));
     };
 

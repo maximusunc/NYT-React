@@ -19,7 +19,7 @@ const SearchForm = props =>
                 </div>
             </div>
             <div className="form-group row">
-                <label htmlFor="startDate" className="col-sm-2 col-form-label">Start Date</label>
+                <label htmlFor="startDate" className="col-sm-2 col-form-label">Start Date (Optional)</label>
                 <div className="col-sm-10">
                 <input
                     value={props.startDate}
@@ -28,12 +28,12 @@ const SearchForm = props =>
                     type="text"
                     className="form-control"
                     id="startDate"
-                    placeholder="Start Date"
+                    placeholder="yyyymmdd"
                 />
                 </div>
             </div>
             <div className="form-group row">
-                <label htmlFor="endDate" className="col-sm-2 col-form-label">End Date</label>
+                <label htmlFor="endDate" className="col-sm-2 col-form-label">End Date (Optional)</label>
                 <div className="col-sm-10">
                 <input
                     value={props.endDate}
@@ -42,7 +42,7 @@ const SearchForm = props =>
                     type="text"
                     className="form-control"
                     id="endDate"
-                    placeholder="End Date"
+                    placeholder="yyyymmdd"
                 />
                 </div>
             </div>
