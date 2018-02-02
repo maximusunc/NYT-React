@@ -10,10 +10,6 @@ const routes = require("./routes");
 // Configure body parser for AJAX requests
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-// Add routes, both API and view
-
-
-
 
 
 // Serve up static assets (usually on heroku)
@@ -21,6 +17,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+// Add routes, both API and view
 app.use('api',routes);
 
 // Set up promises with mongoose
