@@ -11,14 +11,15 @@ const routes = require("./routes");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // Add routes, both API and view
-app.use(routes);
+app.use('/', express.static(path.join(__dirname, 'client','build')));
+
+app.use('api',routes);
 
 
 // Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
+//if (process.env.NODE_ENV === "production") {
   // app.use(express.static("client/build"));
-  app.use('/', express.static(path.join(__dirname, 'client','build')));
-}
+//}
 
 // Set up promises with mongoose
 mongoose.Promise = global.Promise;
