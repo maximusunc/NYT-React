@@ -5,6 +5,7 @@ import Articles from "./pages/home/home.js";
 import Saved from "./pages/saved/saved.js";
 import Jumbotron from "./components/jumbotron";
 import Navbar from "./components/navbar";
+import Footer from "./components/footer";
 
 const App = () => 
   <Router>
@@ -15,6 +16,7 @@ const App = () =>
         <Route exact path="/" component={Articles} />
         <Route exact path="/saved" component={Saved} />
       </Switch>
+      <Footer />
     </div>
   </Router>;
 

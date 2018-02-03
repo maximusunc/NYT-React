@@ -28,7 +28,7 @@ class Saved extends Component {
     render() {
         return (
             <Container>
-                <h1>Saved</h1>
+                <h1 className="text-center">Saved</h1>
                 {this.state.savedArticles.length ? (
                     this.state.savedArticles.map(article => (
                         <SavedArticles 
@@ -40,7 +40,7 @@ class Saved extends Component {
                         />
                     ))
                 ) : (
-                    <h2>You have no saved articles</h2>
+                    <h2 className="text-center">You have no saved articles</h2>
                 )}
                 
             </Container>

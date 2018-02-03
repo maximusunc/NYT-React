@@ -78,7 +78,7 @@ class Articles extends Component {
                         />
                     ))
                 ) : (
-                    <h2>No Articles to display yet</h2>
+                    <h2 className="text-center">No Articles to display yet</h2>
                 )}
                 
                 

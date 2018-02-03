@@ -1,6 +1,10 @@
-#home {
-    display: inline;
+.navbar {
+    margin-bottom: 0px;
+    background-color: rgb(0, 153, 204);
 }
-#saved {
-    float: right;
+#home, #saved {
+    color: white;
+}
+#home:active, #saved:active {
+    color: blue;
 }
